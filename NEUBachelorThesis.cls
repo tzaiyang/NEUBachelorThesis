@@ -1,16 +1,6 @@
+
 \ProvidesClass{NEUBachelorThesis}
-\LoadClass[UTF8,oneside,a4paper]{ctexart}
-
-
-\def \@school {}
-\def \@classnum {}
-\def \@stunum {}
-\def \@instructor {}
-\newcommand{\school}[1]{\def \@school {#1}}
-\newcommand{\classnum}[1]{\def \@classnum {#1}}
-\newcommand{\stunum}[1]{\def \@stunum {#1}}
-\newcommand{\instructor}[1]{\def \@instructor {#1}}
-
+\LoadClass[UTF8,oneside,a4paper]{ctexbook}
 
 \RequirePackage[top=3cm,bottom=2cm,left=2cm,right=2cm]{geometry} % 页边距
 \RequirePackage{amsmath} %数学公式
@@ -32,7 +22,39 @@
 \RequirePackage{xltxtra}
 \RequirePackage{bm}
 \RequirePackage{pdfpages}
+\RequirePackage{fancyhdr}
 
+% 页眉、页脚、脚注设定
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+% 采用带圈数字符号代替*号脚注
+\xeCJKsetcharclass{`①}{`⑩}{1}
+
+% 默认页面页眉页脚样式
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\zihao{-5}—\ \thepage\ —}% 页码位于页脚居中
+
+    % 左右两栏页眉，左为论文题目右为当前章
+    \fancyhead[L]{\zihao{-5}东北大学毕业设计（论文）}
+    \fancyhead[R]{\zihao{-5}\leftmark}
+
+    % 居中式页眉，可以选择为论文题目或当前章
+    %\fancyhead[C]{\zihao{-5}\@ctitle}
+    %\fancyhead[C]{\zihao{-5}\leftmark}
+}
+\pagestyle{plain}
+
+% 中英文摘要页面样式
+\fancypagestyle{cAbstract}{
+    \fancyhead[R]{\zihao{-5}摘要}
+}
+\fancypagestyle{eAbstract}{
+    \fancyhead[R]{\zihao{-5}ABSTRACT}
+}
+
+\fancypagestyle{listoffiguretable}{\fancyhead[R]{\zihao{-5}插图与表格目录}}
 
 \newcommand{\ctitle}[1]{
 \begin{center}
@@ -102,5 +124,3 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{figures/}}
 \bibliographystyle{unsrt}
-
-

@@ -1,27 +1,25 @@
-\documentclass{NEUBachelorThesis}
+\documentclass{NEUBachelorThesis} %NEUBachelorThesis
 
 \begin{document}
-
-\include{data/cover}
-
-\include{data/abstract}
-
-\tableofcontents
-
+%前置部分
+\pagestyle{empty}
+\include{data/cover}%封面
+\include{data/abstract}%摘要页
+\tableofcontents%目录
 \pagestyle{headings}
-
-\include{data/chap01}
+%主体部分
+\include{data/chap01}%绪论
+%%正文
 \include{data/chap02}
 \include{data/chap03}
 \include{data/chap04}
 \include{data/chap05}
-\include{data/chap06}
 
-\bibliographystyle{plain}
-\bibliography{ref/refs}
-
-\include{data/ack}  
+\include{data/chap06}%结论
+%结尾部分
+\bibliography{ref/refs}%参考文献
+\include{data/ack}%结束语
+%%附录
 \appendix
 \include{data/appendixA}
-
 \end{document}

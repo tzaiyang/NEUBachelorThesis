@@ -31,7 +31,7 @@
 
 \RequirePackage{xltxtra}
 \RequirePackage{bm}
-
+\RequirePackage{pdfpages}
 
 
 \newcommand{\ctitle}[1]{

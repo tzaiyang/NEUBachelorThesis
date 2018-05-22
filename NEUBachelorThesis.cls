@@ -1,4 +1,3 @@
-
 \ProvidesClass{NEUBachelorThesis}
 \LoadClass[UTF8,oneside,a4paper]{ctexbook}
 
@@ -23,11 +22,14 @@
 \RequirePackage{bm}
 \RequirePackage{pdfpages}
 \RequirePackage{fancyhdr}
+\renewcommand\appendix{\setcounter{secnumdepth}{-2}}
 
 % 页眉、页脚、脚注设定
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
+
 % 采用带圈数字符号代替*号脚注
 \xeCJKsetcharclass{`①}{`⑩}{1}
 
@@ -47,14 +49,16 @@
 \pagestyle{plain}
 
 % 中英文摘要页面样式
+% 用法：一定是在章节的标题下面(不能在标题上面）\thispagestyle{cAbstract}(也不能是\pagesyle命令)
 \fancypagestyle{cAbstract}{
     \fancyhead[R]{\zihao{-5}摘要}
 }
 \fancypagestyle{eAbstract}{
-    \fancyhead[R]{\zihao{-5}ABSTRACT}
+    \fancyhead[R]{\zihao{-5}Abstract}
 }
 
 \fancypagestyle{listoffiguretable}{\fancyhead[R]{\zihao{-5}插图与表格目录}}
+
 
 \newcommand{\ctitle}[1]{
 \begin{center}

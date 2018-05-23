@@ -51,10 +51,24 @@
 % 中英文摘要页面样式
 % 用法：一定是在章节的标题下面(不能在标题上面）\thispagestyle{cAbstract}(也不能是\pagesyle命令)
 \fancypagestyle{cAbstract}{
+    \fancyfoot[C]{}% 无页码
     \fancyhead[R]{\zihao{-5}摘要}
 }
 \fancypagestyle{eAbstract}{
+    \fancyfoot[C]{}% 无页码
     \fancyhead[R]{\zihao{-5}Abstract}
+}
+\fancypagestyle{contents}{
+    \fancyfoot[C]{}% 无页码
+    \fancyhead[L]{\zihao{-5}东北大学毕业设计（论文）}
+    \fancyhead[R]{\zihao{-5}目录}
+}
+\newcommand{\contents}{
+\tableofcontents
+\thispagestyle{contents}
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1}%目录页后第一章设置为第一页
 }
 
 \fancypagestyle{listoffiguretable}{\fancyhead[R]{\zihao{-5}插图与表格目录}}
@@ -128,3 +142,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{figures/}}
 \bibliographystyle{unsrt}
+\CTEXsetup[format={\Large\bfseries}]{section}%二级标题左对齐
+\CTEXsetup[name={第,章},number={\arabic{chapter}}]{chapter}%章节编号设置为阿拉伯数字格式

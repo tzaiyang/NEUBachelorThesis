@@ -1,4 +1,5 @@
 {
+    "editor.wordWrap": "on",
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
         {
@@ -8,6 +9,18 @@
             "bibtex",
             "xelatex",
             "xelatex"
+          ]
+        },
+        {
+          "name": "xelatex",
+          "tools": [
+            "xelatex"
+          ]
+        },
+        {
+          "name": "bibtex",
+          "tools": [
+            "bibtex"
           ]
         },
         
@@ -42,6 +55,18 @@
               "%DOC%"
             ]
           },
+        {
+          "name": "xelatex",
+          "command": "xelatex",
+          "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "-pdf",
+            "%DOC%"
+          ]
+        },
+ 
         {
           "name": "latexmk",
           "command": "latexmk",

@@ -1,13 +1,16 @@
 \documentclass{NEUBachelorThesis} %NEUBachelorThesis
 \begin{document}
 %前置部分
+\frontmatter
 \include{data/cover}%封面
+\include{data/titlepage}%扉页
 \includepdf{data/task.pdf}%任务书
 \include{data/abstract}%摘要页
 \contents%目录
 
 
 %主体部分
+\mainmatter
 \include{data/chap01}%绪论
 \include{data/chap02}%正文
 \include{data/chap03}
@@ -18,6 +21,7 @@
 
 
 %结尾部分
+\backmatter
 \bibliography{ref/refs}%参考文献
 \include{data/ack}%结束语
 \include{data/appendix}%附录

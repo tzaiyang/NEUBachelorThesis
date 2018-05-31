@@ -24,6 +24,8 @@
 
 \CTEXsetup[
     format={\Large\bfseries},
+    nameformat+={\zihao{3}},
+    aftername={\ },
     titleformat={\zihao{3}\heiti},
     beforeskip={1.0ex},
     afterskip={1.0ex}
@@ -31,6 +33,8 @@
 
 \CTEXsetup[
     format={\Large\bfseries},
+    nameformat+={\zihao{4}},
+    aftername={\ },
     titleformat={\zihao{4}\heiti},
     beforeskip={1.0ex},
     afterskip={1.0ex}
@@ -188,7 +192,7 @@
 %目录项字体格式
 \renewcommand{\cftchapfont}{\zihao{3}\heiti}
 \renewcommand{\cftsecfont}{\zihao{4}\songti}
-\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
+\renewcommand{\cftsubsecfont}{\zihao{4}\songti}
 %目录项缩进
 \setlength{\cftchapindent}{0em}
 \setlength{\cftsecindent}{2.5em}
@@ -259,6 +263,7 @@
 %---------数学公式------------%
 \RequirePackage{amsmath} 
 \RequirePackage{amsthm}
+\RequirePackage{amssymb}
 
 \def\insertmath#1{
     \begin{equation}
@@ -268,6 +273,7 @@
 
 %-----------表格---------------%
 \RequirePackage{longtable} %长表格
+\RequirePackage{booktabs}%三线表
 
 %-----------插图---------------%
 \RequirePackage{graphicx}

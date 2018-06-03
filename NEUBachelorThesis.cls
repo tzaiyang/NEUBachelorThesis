@@ -3,11 +3,13 @@
 \RequirePackage{pdfpages}%插入pdf文档
 
 %--------字体设置-------%
+\RequirePackage{times}
 \setmainfont{Times New Roman}%西文字体
 \songti
 
 %--------行距---------%
-\renewcommand{\baselinestretch}{1.35}\normalsize
+\RequirePackage{setspace}
+\renewcommand{\baselinestretch}{1.5}%\normalsize %1.5倍行距
 % \showthe\baselineskip
 
 %--------章节设置-------%
@@ -41,8 +43,9 @@
 ]{subsection}%二级标题左对齐
 
 %----------段落---------%
-\RequirePackage{indentfirst}
+\RequirePackage{indentfirst}%首段段首缩进
 \setlength{\parindent}{4em}%段落缩进
+% \CJKindent  %缩进两个中文字符宽度
 
 %----------封面---------%
 \makeatletter
@@ -141,76 +144,8 @@
 }
 \makeatother
 
-%------------摘要-----------%
-\newenvironment{cabstract}{
-    \setcounter{page}{2}
-    \setcounter{secnumdepth}{-1}
-    \chapter{摘要}
-    \songti\zihao{-4}
-    \renewcommand{\baselinestretch}{1.35}\normalsize
-    % \centerline{\heti\zihao{2}{摘要}}
-    % % \begin{quote}
-}{\setcounter{secnumdepth}{3}}
-    
-\def\ckeywords#1{
-    \vskip 0.5cm
-    \noindent\zihao{4}\textbf{关键词}\quad\songti\zihao{-4}#1
-}
-
-\newenvironment{eabstract}{
-    \setcounter{secnumdepth}{-1}
-    % \newpage
-    \chapter{ABSTRACT}
-
-}%开始部分定义
-{\setcounter{secnumdepth}{3}}%结束部分定义
-
-\def\ekeywords#1{
-    \vskip 0.5cm
-    \noindent\zihao{4}\textbf{Keywords}\quad\zihao{-4}#1
-    \newpage
-    \pagestyle{contents}
-}
-
-% \newenvironment{ekeywords}{
-%     \vskip 0.5cm
-%     \noindent\zihao{4}\textbf{关键词}\quad\songti\zihao{-4}
-% 	\begin{quote}\par
-% }%开始部分定义
-% {\end{quote}}%结束部分定义
-
-%------------目录------------%
-% \CTEXoptions[contentsname={目录}]
-\RequirePackage[titles,subfigure]{tocloft}
-\renewcommand{\cftdot}{$\cdot$}
-\renewcommand{\cftdotsep}{1}%点间距
-\renewcommand{\cftchapdotsep}{\cftdotsep}
-%目录项行距设置
-\setlength{\cftbeforechapskip}{1.5ex}
-\setlength{\cftbeforesecskip}{1.5ex}
-\setlength{\cftbeforesubsecskip}{1.5ex}
-%目录项字体格式
-\renewcommand{\cftchapfont}{\zihao{3}\heiti}
-\renewcommand{\cftsecfont}{\zihao{4}\songti}
-\renewcommand{\cftsubsecfont}{\zihao{4}\songti}
-%目录项缩进
-\setlength{\cftchapindent}{0em}
-\setlength{\cftsecindent}{2.5em}
-\setlength{\cftsubsecindent}{5.0em}
-
-\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
-
-\newcommand{\contents}{
-\tableofcontents
-\thispagestyle{contents}
-\newpage
-\pagestyle{plain}
-\pagenumbering{arabic}
-\setcounter{page}{1}%目录页后第一章设置为第一页
-}
-
 %----------页面设置----------%
-\RequirePackage[top=3cm,bottom=2cm,left=2cm,right=2cm]{geometry} % 调整页面式样
+\RequirePackage{geometry} % 调整页面式样
 \geometry{
 	left=31.7mm,
 	right=31.7mm,
@@ -244,6 +179,12 @@
 }
 \pagestyle{plain}
 
+% \newcommand{\clearemptydoublepage}{% 
+% \clearpage {
+%     \pagestyle{empty}
+%     \origdoublepage}
+% }
+
 % 采用带圈数字符号代替*号脚注
 \xeCJKsetcharclass{`①}{`⑩}{1}
 
@@ -259,6 +200,78 @@
     \fancyhead[R]{\zihao{-5}目录}
 }
 \fancypagestyle{listoffiguretable}{\fancyhead[R]{\zihao{-5}插图与表格目录}}
+
+%------------摘要-----------%
+\newenvironment{cabstract}{
+    \setcounter{page}{2}
+    \setcounter{secnumdepth}{-1}
+    \chapter{摘要}
+    \songti\zihao{-4}
+    \begin{spacing}{1.5}%1.5倍行距
+    % \renewcommand{\baselinestretch}{1.5}%\normalsize
+    % \centerline{\heti\zihao{2}{摘要}}
+    % % \begin{quote}
+}
+{\end{spacing}
+\setcounter{secnumdepth}{3}}
+    
+\def\ckeywords#1{
+    \vskip 0.5cm
+    \noindent\zihao{4}\textbf{关键词}\quad\songti\zihao{-4}#1
+    \cleardoublepage
+}
+
+\newenvironment{eabstract}{
+    \setcounter{secnumdepth}{-1}
+    % \newpage
+    \chapter{ABSTRACT}
+
+}%开始部分定义
+{\setcounter{secnumdepth}{3}}%结束部分定义
+
+\def\ekeywords#1{
+    \vskip 0.5cm
+    \noindent\zihao{4}\textbf{Keywords}\quad\zihao{-4}#1
+    % \newpage
+    \pagestyle{contents}
+}
+
+%------------致谢------------%
+\newenvironment{acknowledge}{
+    \setcounter{secnumdepth}{-2}
+    \chapter{致谢}
+    % \cleardoublepage
+}%开始部分定义
+{\setcounter{secnumdepth}{3}}%结束部分定义
+%------------目录------------%
+% \CTEXoptions[contentsname={目录}]
+\RequirePackage[titles,subfigure]{tocloft}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftdotsep}{1}%点间距
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+%目录项行距设置
+\setlength{\cftbeforechapskip}{1.5ex}
+\setlength{\cftbeforesecskip}{1.5ex}
+\setlength{\cftbeforesubsecskip}{1.5ex}
+%目录项字体格式
+\renewcommand{\cftchapfont}{\zihao{3}\heiti}
+\renewcommand{\cftsecfont}{\zihao{4}\songti}
+\renewcommand{\cftsubsecfont}{\zihao{4}\songti}
+%目录项缩进
+\setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{2.5em}
+\setlength{\cftsubsecindent}{5.0em}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+
+\newcommand{\contents}{
+\tableofcontents
+\thispagestyle{contents}
+\newpage
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}%目录页后第一章设置为第一页
+}
 
 %---------数学公式------------%
 \RequirePackage{amsmath} 
@@ -296,6 +309,16 @@
         \begin{center}     
                 \includegraphics[width=14.5cm]{#1}
                 \caption{\songti\zihao{5}{#2}}
+        \end{center} 
+    \end{figure}    
+}
+
+\def\insertpics#1#2#3{
+    \begin{figure}[ht]
+        %\setcounter{figure}{2} 
+        \begin{center}     
+                \includegraphics[width=#1]{#2}
+                \caption{\songti\zihao{5}{#3}}
         \end{center} 
     \end{figure}    
 }

@@ -191,15 +191,15 @@
 % 用法：一定是在章节的标题下面(不能在标题上面）\thispagestyle{task}(也不能是\pagesyle命令)
 \fancypagestyle{task}{
     % \pagenumbering{Roman}
-    \fancyhead[L]{\zihao{-5}东北大学本科毕业设计（论文）}
-    \fancyhead[R]{\zihao{-5}毕业设计（论文）任务书}
+    \fancyhead[L]{\kaishu\zihao{5}东北大学本科毕业设计（论文）}
+    \fancyhead[R]{\kaishu\zihao{5}毕业设计（论文）任务书}
 }
 \fancypagestyle{contents}{
     % \pagenumbering{Roman}
-    \fancyhead[L]{\zihao{-5}东北大学本科毕业设计（论文）}
-    \fancyhead[R]{\zihao{-5}目录}
+    \fancyhead[L]{\kaishu\zihao{5}东北大学本科毕业设计（论文）}
+    \fancyhead[R]{\kaishu\zihao{5}目录}
 }
-\fancypagestyle{listoffiguretable}{\fancyhead[R]{\zihao{-5}插图与表格目录}}
+\fancypagestyle{listoffiguretable}{\fancyhead[R]{\kaishu\zihao{5}插图与表格目录}}
 
 %------------摘要-----------%
 \newenvironment{cabstract}{
@@ -239,10 +239,11 @@
 %------------致谢------------%
 \newenvironment{acknowledge}{
     \setcounter{secnumdepth}{-2}
-    \chapter{致谢}
+    \chapter{致\ \ 谢}
     % \cleardoublepage
 }%开始部分定义
 {\setcounter{secnumdepth}{3}}%结束部分定义
+
 %------------目录------------%
 % \CTEXoptions[contentsname={目录}]
 \RequirePackage[titles,subfigure]{tocloft}
@@ -250,10 +251,20 @@
 \renewcommand{\cftdotsep}{1}%点间距
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 %目录项行距设置
+% 学院要求
+% \setlength{\cftbeforechapskip}{0.5ex}
+% \setlength{\cftbeforesecskip}{0.5ex}
+% \setlength{\cftbeforesubsecskip}{0.5ex}
+%学校要求 
 \setlength{\cftbeforechapskip}{1.5ex}
 \setlength{\cftbeforesecskip}{1.5ex}
 \setlength{\cftbeforesubsecskip}{1.5ex}
 %目录项字体格式
+%学院要求
+% \renewcommand{\cftchapfont}{\zihao{-4}\heiti}
+% \renewcommand{\cftsecfont}{\zihao{-4}\songti}
+% \renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
+%学校要求
 \renewcommand{\cftchapfont}{\zihao{3}\heiti}
 \renewcommand{\cftsecfont}{\zihao{4}\songti}
 \renewcommand{\cftsubsecfont}{\zihao{4}\songti}
@@ -342,8 +353,13 @@
 %--------------参考文献----------%
 \bibliographystyle{unsrt} %参考文献序号按引用顺序排序
 \RequirePackage[numbers,sort&compress]{natbib} %参数代表：数字和排序与压缩
-%\bibliographystyle{GBT7714-2005NLang} %参考文献格式设为GBT7714-2005N.bst
+% \bibliographystyle{GBT7714-2005NLang} %参考文献格式设为GBT7714-2005N.bst
 \RequirePackage[draft=false,colorlinks=true,CJKbookmarks=true,linkcolor=black,citecolor=green,urlcolor=blue,hyperindex]{hyperref}%引用链接颜色设置
 
 %----------------附录------------%
 \renewcommand\appendix{\setcounter{secnumdepth}{-2}}%附录以一级标题显示并且不显示编号
+
+%-------------生成无页眉页脚的空白页----------%
+% \clearpage
+% \phantom{s}
+% \thispagestyle{empty}

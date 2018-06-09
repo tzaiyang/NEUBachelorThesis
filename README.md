@@ -8,16 +8,20 @@ NEUBachelorThesis
 TexLive 2017  
 VSCode+LaTeX Workshop(Alternative)
 
-编译指令
-------------
-    xelatex main.tex  
-    bibtex  main.aux  
-    xelatex main.tex  
-    xelatex main.tex  
+VSCode配置
+----------
+#### 快捷键设置
+[keybindings.json](keybindings.json)  
+构建指令：ctrl+alt+b/ctrl+s  
+单步编译：ctrl+alt+n  
+计算字数：ctrl+alt+c  
+#### Latex Workshop用户配置
+[vscode_setting.json](vscode_setting.json)
+#### texcount bug修复（仅限windows用户)
+如[texcount.pl](texcount.pl)文件所示，将其中10-13行的内容注释掉。
 
-如果用的是VSCode编辑器+LaTex Workshop插件,可以直接将[vscode_setting.json](vscode_setting.json)的文件花括号中的内容添加到用户设置（Ctrl+,）中,这样在每次保存tex文件后，会自动执行以上编译步骤。或通过（Ctrl+Alt+B）快捷键手动编译。
-
-#### [点击此处预览](main.pdf)
+[点击此处预览](main.pdf)
+-----------------------
 
 ![Preview](figures/main.jpg)
 

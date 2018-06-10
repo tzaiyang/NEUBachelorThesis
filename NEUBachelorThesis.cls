@@ -1,5 +1,5 @@
 \ProvidesClass{NEUBachelorThesis}
-\LoadClass[UTF8,cs4size,oneside,openright,a4paper]{ctexbook}
+\LoadClass[UTF8,cs4size,a4paper]{ctexbook}%默认twoside,openright
 \RequirePackage{pdfpages}%插入pdf文档
 
 %--------字体设置-------%
@@ -101,6 +101,8 @@
     % \makebox[\@item@width][s]{\heiti{日期}} \kaishu\underline{\makebox[\@title@width][c]{\@cdate}}\vspace{10bp}\\
     \makebox[\@title@width][c]{\@cdate}
 \end{center}
+\clearpage
+\phantom{s}
 }
 
 %----------扉页---------%
@@ -124,11 +126,14 @@
     \makebox[6em][s]{\heiti{东北大学}}\\
     \makebox[5em][s]{\heiti{\@cdate}}
     \end{center}
+
+    \clearpage
+    \phantom{s}
 %英文扉页
     \newpage
     \setmainfont{Times New Roman}
     \zihao{3}
-    \vspace*{5cm}
+    \vspace*{3cm}
     \begin{center}
         {\heiti{\@etitle}}\vspace{5cm}
 
@@ -141,21 +146,24 @@
 
         {\heiti{\@edate}}
     \end{center}
+
+    \clearpage
+    \phantom{s}
 }
 \makeatother
 
 %----------页面设置----------%
 \RequirePackage{geometry} % 调整页面式样
 \geometry{
-	left=31.7mm,
-	right=31.7mm,
+	left=31.75mm,
+	right=31.75mm,
 	top=25.4mm,
 	bottom=25.4mm,
-	headheight=5mm,
+	headheight=7mm,
 	headsep=7mm,
 	% textheight=253mm,
 	% textwidth=155mm,
-	footskip=9mm,
+	footskip=7mm,
 	hmarginratio={2:3}}
 
 %---------页眉、页脚、脚注设定------%
@@ -179,12 +187,6 @@
 }
 \pagestyle{plain}
 
-% \newcommand{\clearemptydoublepage}{% 
-% \clearpage {
-%     \pagestyle{empty}
-%     \origdoublepage}
-% }
-
 % 采用带圈数字符号代替*号脚注
 \xeCJKsetcharclass{`①}{`⑩}{1}
 
@@ -199,18 +201,34 @@
     \fancyhead[L]{\kaishu\zihao{5}东北大学本科毕业设计（论文）}
     \fancyhead[R]{\kaishu\zihao{5}目录}
 }
+\fancypagestyle{cabstract}{
+    \fancyhead[L]{\kaishu\zihao{5}东北大学本科毕业设计（论文）}
+    \fancyhead[R]{\kaishu\zihao{5}摘要}
+}
+\fancypagestyle{eabstract}{
+    \fancyhead[L]{\kaishu\zihao{5}东北大学本科毕业设计（论文）}
+    \fancyhead[R]{\kaishu\zihao{5}ABSTRACT}
+}
 \fancypagestyle{listoffiguretable}{\fancyhead[R]{\kaishu\zihao{5}插图与表格目录}}
+
+%首页右开的时候，全空的左页不留页眉页脚
+\makeatletter
+\let\neu@cleardoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{
+    \clearpage{\pagestyle{empty}
+    \neu@cleardoublepage}}
 
 %------------摘要-----------%
 \newenvironment{cabstract}{
     \setcounter{page}{2}
     \setcounter{secnumdepth}{-1}
-    \chapter{摘要}
+    \chapter*{\renewcommand{\baselinestretch}{1.5}\normalsize
+    {\heiti\zihao{3}\@ctitle}\\{\zihao{2}摘要}}
+    \addcontentsline{toc}{chapter}{摘要}
     \songti\zihao{-4}
+    \thispagestyle{cabstract}
     \begin{spacing}{1.5}%1.5倍行距
-    % \renewcommand{\baselinestretch}{1.5}%\normalsize
-    % \centerline{\heti\zihao{2}{摘要}}
-    % % \begin{quote}
+
 }
 {\end{spacing}
 \setcounter{secnumdepth}{3}}
@@ -218,13 +236,14 @@
 \def\ckeywords#1{
     \vskip 0.5cm
     \noindent\zihao{4}\textbf{关键词}\quad\songti\zihao{-4}#1
-    \cleardoublepage
 }
 
 \newenvironment{eabstract}{
     \setcounter{secnumdepth}{-1}
-    % \newpage
-    \chapter{ABSTRACT}
+    \chapter*{\renewcommand{\baselinestretch}{1.5}\normalsize
+        {\zihao{3}\@etitle}\\{\zihao{2}ABSTRACT}}
+    \addcontentsline{toc}{chapter}{ABSTRACT}
+    \thispagestyle{eabstract}
 
 }%开始部分定义
 {\setcounter{secnumdepth}{3}}%结束部分定义
@@ -232,17 +251,20 @@
 \def\ekeywords#1{
     \vskip 0.5cm
     \noindent\zihao{4}\textbf{Keywords}\quad\zihao{-4}#1
-    % \newpage
     \pagestyle{contents}
 }
+\makeatother
 
 %------------致谢------------%
 \newenvironment{acknowledge}{
     \setcounter{secnumdepth}{-2}
     \chapter{致\ \ 谢}
-    % \cleardoublepage
 }%开始部分定义
-{\setcounter{secnumdepth}{3}}%结束部分定义
+{\setcounter{secnumdepth}{3}
+\clearpage
+\phantom{s}
+\thispagestyle{empty}
+}%结束部分定义
 
 %------------目录------------%
 % \CTEXoptions[contentsname={目录}]
@@ -278,6 +300,13 @@
 \newcommand{\contents}{
 \tableofcontents
 \thispagestyle{contents}
+
+% \ifodd {
+\clearpage
+\phantom{s}
+\thispagestyle{empty}
+% }
+
 \newpage
 \pagestyle{plain}
 \pagenumbering{arabic}
@@ -352,7 +381,7 @@
 
 %--------------参考文献----------%
 \bibliographystyle{unsrt} %参考文献序号按引用顺序排序
-\RequirePackage[numbers,sort&compress]{natbib} %参数代表：数字和排序与压缩
+\RequirePackage[numbers,sort&compress,super,square]{natbib} %参数代表：数字,排序与压缩,上标，方括号
 % \bibliographystyle{GBT7714-2005NLang} %参考文献格式设为GBT7714-2005N.bst
 \RequirePackage[draft=false,colorlinks=true,CJKbookmarks=true,linkcolor=black,citecolor=green,urlcolor=blue,hyperindex]{hyperref}%引用链接颜色设置
 

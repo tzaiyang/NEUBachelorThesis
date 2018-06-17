@@ -1,7 +1,7 @@
 NEUBachelorThesis
 =================
 
-东北大学本科毕业设计论文模板
+[东北大学本科毕业设计论文模板](main.pdf)
 
 工作环境
 --------
@@ -19,11 +19,6 @@ VSCode配置
 [vscode_setting.json](vscode_setting.json)
 #### texcount bug修复（仅限windows用户)
 如[texcount.pl](texcount.pl)文件所示，将其中10-13行的内容注释掉。
-
-[点击此处预览](main.pdf)
------------------------
-
-![Preview](figures/main.jpg)
 
 使用说明
 -------

@@ -61,46 +61,39 @@
 \def\cdate#1{\def\@cdate{#1}}\def\@cdate{}
 \def\edate#1{\def\@edate{#1}}\def\@edate{}
 
-\newlength{\@title@width}
 \newlength{\@item@width}
 \newlength{\@titlepage@left}
-\newlength{\@title@height}
 
 \def\makecover{
     \pagestyle{empty}
-    % \centerline{\kaishu\zihao{-0}{东北大学}}
-    \begin{figure}[htbp]
+    \vspace*{1.2cm}
+    \begin{figure}[h]
         \begin{center}
-            \includegraphics[width=2.0in]{neufont.eps}
+            \begin{minipage}[t]{0.25\textwidth}{  
+            \includegraphics[height=0.55in]{neufont.eps} 
+            }
+            \end{minipage} 
+            \quad
+            \begin{minipage}[t]{0.08\textwidth}{
+            \includegraphics[height=0.5in]{neu.eps} 
+            } 
+            \end{minipage} 
+            \quad
+            \begin{minipage}[t]{0.2\textwidth}{
+                \includegraphics[height=0.4in]{efont.eps} 
+            } 
+            \end{minipage} 
         \end{center}
     \end{figure}
-    
-    \begin{figure}[htbp]
-        \begin{center}
-            \includegraphics[width=2.0in]{neu.eps}
-        \end{center}
-    \end{figure}
-    
+
     \vskip 0.8cm
-    \centerline{\heiti\zihao{1}{本\ 科\  毕\  业\  设\  计\  (论文)}}
-    \vskip 3.0cm
+    \begin{center}
+        \begin{spacing}{1.20}%1.5倍行距
+        \underline{\heiti\zihao{0}\ziju{0.3}{毕业设计\quad (论文)}}
+        \heiti\zihao{-1}{GRADUATION\quad DESIGN\ (THESIS)}
+        \end{spacing}
+    \end{center}
 
-\setlength{\@title@width}{24em}
-\setlength{\@item@width}{6em}
-\setlength{\@titlepage@left}{4.0cm}
-\setlength{\@title@height}{9bp}
-
-\begin{center}
-    \zihao{3}
-    \makebox[\@item@width][s]{\heiti{题目}}  \kaishu\underline{\makebox[\@title@width][c]{\@ctitle}}\vspace{\@title@height}\\
-    \makebox[\@item@width][s]{\heiti{学生姓名}}  \kaishu\underline{\makebox[\@title@width][c]{\@cauthor}}\vspace{\@title@height}\\
-    \makebox[\@item@width][s]{\heiti{学院}}  \kaishu\underline{\makebox[\@title@width][c]{\@ccollege}}\vspace{\@title@height}\\
-    \makebox[\@item@width][s]{\heiti{专业}}  \kaishu\underline{\makebox[\@title@width][c]{\@csubject}}\vspace{\@title@height}\\
-    \makebox[\@item@width][s]{\heiti{指导教师}}  \kaishu\underline{\makebox[\@title@width][c]{\@csupervisor}}\vspace{\@title@height}\\
-    \vskip 2.2cm
-    % \makebox[\@item@width][s]{\heiti{日期}} \kaishu\underline{\makebox[\@title@width][c]{\@cdate}}\vspace{10bp}\\
-    \makebox[\@title@width][c]{\@cdate}
-\end{center}
 \clearpage
 \phantom{s}
 }
@@ -111,6 +104,7 @@
 \zihao{3}
 \vspace*{3cm}
 \centerline{\heiti{\@ctitle}}\vspace{5cm}
+\setlength{\@titlepage@left}{4.0cm}
 \setlength{\@item@width}{7em}
 
 \begin{flushleft}
@@ -320,6 +314,9 @@
 
 \def\insertmath#1{
     \begin{equation}
+        %公式与上下文空白的间距
+        % \setlength{\abovedisplayskip}{3pt}
+        % \setlength{\belowdisplayskip}{3pt}
         {#1}
     \end{equation}
 }

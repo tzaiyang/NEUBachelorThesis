@@ -69,18 +69,18 @@
     \vspace*{1.2cm}
     \begin{figure}[h]
         \begin{center}
-            \begin{minipage}[t]{0.25\textwidth}{  
-            \includegraphics[height=0.55in]{neufont.eps} 
+            \begin{minipage}[t]{0.19\textwidth}{  
+            \includegraphics[height=0.45in]{neufont.eps} 
             }
             \end{minipage} 
             \quad
-            \begin{minipage}[t]{0.08\textwidth}{
-            \includegraphics[height=0.5in]{neu.eps} 
+            \begin{minipage}[t]{0.062\textwidth}{
+            \includegraphics[height=0.45in]{neu.eps} 
             } 
             \end{minipage} 
             \quad
-            \begin{minipage}[t]{0.2\textwidth}{
-                \includegraphics[height=0.4in]{efont.eps} 
+            \begin{minipage}[t]{0.22\textwidth}{
+                \includegraphics[height=0.38in]{efont.eps} 
             } 
             \end{minipage} 
         \end{center}
@@ -88,9 +88,11 @@
 
     \vskip 0.8cm
     \begin{center}
-        \begin{spacing}{1.20}%1.5倍行距
-        \underline{\heiti\zihao{0}\ziju{0.3}{毕业设计\quad (论文)}}
-        \heiti\zihao{-1}{GRADUATION\quad DESIGN\ (THESIS)}
+        \begin{spacing}{2.2}%1.5倍行距
+        \underline{\heiti\zihao{0}\ziju{0.16}{毕业设计\quad(论文)}}
+        % \setmainfont{DejaVu Sans}
+        % \fontspec{Times New Roman}
+        {\zihao{2}{GRADUATION\quad DESIGN\ (THESIS)}}
         \end{spacing}
     \end{center}
 
